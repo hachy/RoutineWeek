@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_week"
+        android:icon="@mipmap/ic_view_week_white_24dp"
+        android:title="@string/menu_week" />
+    <item
+        android:id="@+id/action_daily"
+        android:icon="@mipmap/ic_view_day_white_24dp"
+        android:title="@string/menu_daily" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@mipmap/ic_settings_white_24dp"
+        android:title="@string/menu_settings" />
+</menu>
