@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day_1">月</string>
+    <string name="day_2">火</string>
+    <string name="day_3">水</string>
+    <string name="day_4">木</string>
+    <string name="day_5">金</string>
+    <string name="day_6">土</string>
+    <string name="day_7">日</string>
+</resources>
