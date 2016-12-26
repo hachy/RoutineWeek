@@ -4,6 +4,8 @@ package me.hachy.routineweek.fragment;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -51,6 +53,11 @@ public class DailyFragment extends Fragment {
                 .inMemory()
                 .build();
         tempRealm = Realm.getInstance(tempConfig);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                new LinearLayoutManager(getActivity()).getOrientation());
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
