@@ -5,8 +5,11 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -54,6 +57,32 @@ public class RoutineListAdapter extends RealmRecyclerViewAdapter<Todo, RoutineLi
                     }
                 }
                 realm.commitTransaction();
+            }
+        });
+
+        holder.binding.moreVert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(context, view);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.list_popup, popup.getMenu());
+                popup.show();
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (item.getItemId() == R.id.remove) {
+                            realm.beginTransaction();
+                            int pos = holder.getAdapterPosition();
+                            Todo t = getItem(pos);
+                            if (t != null) {
+                                t.deleteFromRealm();
+                            }
+                            notifyItemRemoved(pos);
+                            realm.commitTransaction();
+                        }
+                        return true;
+                    }
+                });
             }
         });
     }
