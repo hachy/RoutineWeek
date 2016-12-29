@@ -31,6 +31,7 @@ public class DailyFragment extends Fragment {
     private Realm tempRealm;
     private RecyclerView recyclerView;
     private RoutineListAdapter adapter;
+    private FloatingActionButton fab;
 
     public DailyFragment() {
         // Required empty public constructor
@@ -45,7 +46,7 @@ public class DailyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_daily, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.main_fab);
+        fab = (FloatingActionButton) view.findViewById(R.id.main_fab);
 
         realm = Realm.getDefaultInstance();
         RealmConfiguration tempConfig = new RealmConfiguration.Builder()
@@ -58,6 +59,22 @@ public class DailyFragment extends Fragment {
                 new LinearLayoutManager(getActivity()).getOrientation());
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.divider));
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    if (fab.isShown()) {
+                        fab.hide();
+                    }
+                } else if (dy < 0) {
+                    if (!fab.isShown()) {
+                        fab.show();
+                    }
+                }
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

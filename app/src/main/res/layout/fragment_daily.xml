@@ -41,6 +41,8 @@
         android:src="@mipmap/ic_add_white_24dp"
         app:backgroundTint="@color/colorPrimaryDark"
         app:borderWidth="0dp"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:layout_anchor="@id/recycler_view"
+        app:layout_anchorGravity="bottom|right" />
 
 </android.support.design.widget.CoordinatorLayout>

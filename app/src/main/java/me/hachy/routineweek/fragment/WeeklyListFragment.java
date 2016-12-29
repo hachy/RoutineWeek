@@ -2,8 +2,10 @@ package me.hachy.routineweek.fragment;
 
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +19,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import me.hachy.routineweek.R;
+import me.hachy.routineweek.activity.AddTaskActivity;
 import me.hachy.routineweek.adapter.RoutineListAdapter;
 import me.hachy.routineweek.model.Todo;
 
@@ -30,6 +33,7 @@ public class WeeklyListFragment extends Fragment {
     private Realm tempRealm;
     private RecyclerView recyclerView;
     private RoutineListAdapter adapter;
+    private FloatingActionButton fab;
 
     public WeeklyListFragment() {
         // Required empty public constructor
@@ -50,6 +54,8 @@ public class WeeklyListFragment extends Fragment {
         day = getArguments().getInt(POSITION);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        fab = (FloatingActionButton) view.findViewById(R.id.main_fab);
+        ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.view_pager);
 
         realm = Realm.getDefaultInstance();
         RealmConfiguration tempConfig = new RealmConfiguration.Builder()
@@ -62,6 +68,52 @@ public class WeeklyListFragment extends Fragment {
                 new LinearLayoutManager(getActivity()).getOrientation());
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.divider));
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                switch (state) {
+                    case ViewPager.SCROLL_STATE_IDLE:
+                        fab.show();
+                        break;
+                    case ViewPager.SCROLL_STATE_DRAGGING:
+                    case ViewPager.SCROLL_STATE_SETTLING:
+                        fab.hide();
+                        break;
+                }
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    if (fab.isShown()) {
+                        fab.hide();
+                    }
+                } else if (dy < 0) {
+                    if (!fab.isShown()) {
+                        fab.show();
+                    }
+                }
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(AddTaskActivity.createIntent(getActivity(), day));
+            }
+        });
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.ACTION_STATE_DRAG | ItemTouchHelper.UP | DOWN, 0) {
