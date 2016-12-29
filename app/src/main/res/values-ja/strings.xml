@@ -8,4 +8,11 @@
     <string name="day_6">土</string>
     <string name="day_7">日</string>
     <string name="remove">削除</string>
+    <string name="day_of_week_0">月曜日</string>
+    <string name="day_of_week_1">火曜日</string>
+    <string name="day_of_week_2">水曜日</string>
+    <string name="day_of_week_3">木曜日</string>
+    <string name="day_of_week_4">金曜日</string>
+    <string name="day_of_week_5">土曜日</string>
+    <string name="day_of_week_6">日曜日</string>
 </resources>

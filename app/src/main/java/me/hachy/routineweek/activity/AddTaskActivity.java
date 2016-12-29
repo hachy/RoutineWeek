@@ -47,6 +47,8 @@ public class AddTaskActivity extends AppCompatActivity {
         editText = (AppCompatEditText) findViewById(R.id.edit_text);
         AppCompatButton btn = (AppCompatButton) findViewById(R.id.add_task);
 
+        int strId = getResources().getIdentifier("day_of_week_" + String.valueOf(day), "string", getPackageName());
+        toolbar.setTitle(getResources().getString(strId));
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

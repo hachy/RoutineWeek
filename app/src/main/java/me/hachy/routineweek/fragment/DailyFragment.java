@@ -79,7 +79,7 @@ public class DailyFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(AddTaskActivity.createIntent(getActivity(), 8));
+                startActivity(AddTaskActivity.createIntent(getActivity(), 7));
             }
         });
 
@@ -142,7 +142,7 @@ public class DailyFragment extends Fragment {
     }
 
     private void setUpRecyclerView() {
-        RealmResults<Todo> todo = realm.where(Todo.class).equalTo("day", 8).findAllSorted("createdTime");
+        RealmResults<Todo> todo = realm.where(Todo.class).equalTo("day", 7).findAllSorted("createdTime");
         adapter = new RoutineListAdapter(getContext(), todo, false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
