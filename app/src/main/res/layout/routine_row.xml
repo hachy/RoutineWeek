@@ -6,6 +6,10 @@
         <variable
             name="todo"
             type="me.hachy.routineweek.model.Todo" />
+
+        <variable
+            name="handlers"
+            type="me.hachy.routineweek.handler.MyHandlers" />
     </data>
 
     <LinearLayout
@@ -35,6 +39,7 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
+            android:onLongClick="@{handlers::onLongClick}"
             android:paddingEnd="0dp"
             android:paddingLeft="10dp"
             android:paddingRight="0dp"
