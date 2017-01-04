@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/more_light_grey"
     tools:context="me.hachy.routineweek.fragment.WeeklyListFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/more_light_grey" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/main_fab"
