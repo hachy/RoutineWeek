@@ -38,7 +38,22 @@ public class WeeklyFragment extends Fragment {
 
         viewpager.setAdapter(new WeeklyPagerAdapter(getFragmentManager(), getActivity()));
         tabLayout.setupWithViewPager(viewpager);
-        viewpager.setCurrentItem(day - 2); // currentItemが0から始まるのとTablayoutが月曜(1)から始まるので-2
+
+        if (day == Calendar.MONDAY) {
+            viewpager.setCurrentItem(0);
+        } else if (day == Calendar.TUESDAY) {
+            viewpager.setCurrentItem(1);
+        } else if (day == Calendar.WEDNESDAY) {
+            viewpager.setCurrentItem(2);
+        } else if (day == Calendar.THURSDAY) {
+            viewpager.setCurrentItem(3);
+        } else if (day == Calendar.FRIDAY) {
+            viewpager.setCurrentItem(4);
+        } else if (day == Calendar.SATURDAY) {
+            viewpager.setCurrentItem(5);
+        } else if (day == Calendar.SUNDAY) {
+            viewpager.setCurrentItem(6);
+        }
 
         return view;
     }
