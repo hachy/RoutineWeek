@@ -62,14 +62,19 @@ public class AddTaskActivity extends AppCompatActivity {
                     textInputLayout.setError(getResources().getString(R.string.til_error_msg));
                 } else {
                     realm = Realm.getDefaultInstance();
-                    int id;
+                    long nextId;
                     try {
-                        id = realm.where(Todo.class).max("id").intValue() + 1;
+                        Number currentId = realm.where(Todo.class).max("id");
+                        if (currentId != null) {
+                            nextId = currentId.longValue() + 1;
+                        } else {
+                            nextId = 0;
+                        }
                     } catch (ArrayIndexOutOfBoundsException ex) {
-                        id = 0;
+                        nextId = 0;
                     }
                     Todo todo = new Todo();
-                    todo.setId(id);
+                    todo.setId(nextId);
                     todo.setDay(day);
                     todo.setContent(editText.getText().toString());
                     todo.setDone(false);
