@@ -5,6 +5,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import io.realm.RealmRecyclerViewAdapter;
 import me.hachy.routineweek.R;
 import me.hachy.routineweek.databinding.RoutineRowBinding;
 import me.hachy.routineweek.model.Todo;
+import me.hachy.routineweek.util.TagColor;
 
 public class RoutineListAdapter extends RealmRecyclerViewAdapter<Todo, RoutineListAdapter.MyViewHolder> {
 
@@ -43,6 +45,11 @@ public class RoutineListAdapter extends RealmRecyclerViewAdapter<Todo, RoutineLi
         Todo todo = getData().get(position);
         holder.binding.setTodo(todo);
         holder.binding.executePendingBindings();
+
+        int i = todo.getTagColor();
+        TagColor t = TagColor.values()[i];
+        int colorId = context.getResources().getIdentifier(t.getName(), "color", context.getPackageName());
+        holder.binding.tagColor.setBackgroundColor(ContextCompat.getColor(context.getApplicationContext(), colorId));
 
         holder.binding.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
