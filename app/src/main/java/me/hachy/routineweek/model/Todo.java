@@ -8,15 +8,17 @@ import io.realm.annotations.PrimaryKey;
 public class Todo extends RealmObject {
 
     @PrimaryKey
-    public long id;
+    private long id;
 
-    public int day;
+    private int day;
 
-    public String content;
+    private String content;
 
-    public boolean done;
+    private boolean done;
 
-    public Date createdTime;
+    private int tagColor;
+
+    private Date createdTime;
 
     public long getId() {
         return id;
@@ -48,6 +50,14 @@ public class Todo extends RealmObject {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public int getTagColor() {
+        return tagColor;
+    }
+
+    public void setTagColor(int tagColor) {
+        this.tagColor = tagColor;
     }
 
     public Date getCreatedTime() {
