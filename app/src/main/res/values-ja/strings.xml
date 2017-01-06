@@ -16,4 +16,5 @@
     <string name="day_of_week_5">土曜日</string>
     <string name="day_of_week_6">日曜日</string>
     <string name="save">保存</string>
+    <string name="explanation_1">Routine Weekは一週間のやることリストを作ることができます。一週間のルーティーンワークを記録しましょう。また毎日のTodoリストもあります。</string>
 </resources>
