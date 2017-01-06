@@ -7,10 +7,10 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,7 +30,6 @@ public class AddTaskActivity extends AppCompatActivity {
 
     private final static String DAY = "day";
     private int day;
-    private Realm realm;
     private AppCompatEditText editText;
     private TextInputLayout textInputLayout;
     private Prefs prefs;
@@ -54,7 +53,6 @@ public class AddTaskActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         textInputLayout = (TextInputLayout) findViewById(R.id.title_text_inpnut_layout);
         editText = (AppCompatEditText) findViewById(R.id.edit_text);
-        AppCompatButton btn = (AppCompatButton) findViewById(R.id.add_task);
         TextView tagColor = (TextView) findViewById(R.id.tag_color);
         ImageView tagIcon = (ImageView) findViewById(R.id.tag_icon);
 
@@ -76,40 +74,13 @@ public class AddTaskActivity extends AppCompatActivity {
                 newFragment.show(getSupportFragmentManager(), "tagColor");
             }
         });
+    }
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (TextUtils.isEmpty(String.valueOf(editText.getText()))) {
-                    textInputLayout.setErrorEnabled(true);
-                    textInputLayout.setError(getResources().getString(R.string.til_error_msg));
-                } else {
-                    realm = Realm.getDefaultInstance();
-                    long nextId;
-                    try {
-                        Number currentId = realm.where(Todo.class).max("id");
-                        if (currentId != null) {
-                            nextId = currentId.longValue() + 1;
-                        } else {
-                            nextId = 0;
-                        }
-                    } catch (ArrayIndexOutOfBoundsException ex) {
-                        nextId = 0;
-                    }
-                    Todo todo = new Todo();
-                    todo.setId(nextId);
-                    todo.setDay(day);
-                    todo.setContent(editText.getText().toString());
-                    todo.setDone(false);
-                    todo.setTagColor(prefs.getTagColorIdx());
-                    todo.setCreatedTime(new Date());
-                    realm.beginTransaction();
-                    realm.copyToRealmOrUpdate(todo);
-                    realm.commitTransaction();
-                    finish();
-                }
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.save_task, menu);
+        return true;
+
     }
 
     @Override
@@ -118,6 +89,35 @@ public class AddTaskActivity extends AppCompatActivity {
         if (id == android.R.id.home) {
             finish();
             return true;
+        } else if (id == R.id.save) {
+            if (TextUtils.isEmpty(String.valueOf(editText.getText()))) {
+                textInputLayout.setErrorEnabled(true);
+                textInputLayout.setError(getResources().getString(R.string.til_error_msg));
+            } else {
+                Realm realm = Realm.getDefaultInstance();
+                long nextId;
+                try {
+                    Number currentId = realm.where(Todo.class).max("id");
+                    if (currentId != null) {
+                        nextId = currentId.longValue() + 1;
+                    } else {
+                        nextId = 0;
+                    }
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    nextId = 0;
+                }
+                Todo todo = new Todo();
+                todo.setId(nextId);
+                todo.setDay(day);
+                todo.setContent(editText.getText().toString());
+                todo.setDone(false);
+                todo.setTagColor(prefs.getTagColorIdx());
+                todo.setCreatedTime(new Date());
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(todo);
+                realm.commitTransaction();
+                finish();
+            }
         }
         return super.onOptionsItemSelected(item);
     }

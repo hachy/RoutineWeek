@@ -44,43 +44,36 @@
         </android.support.design.widget.TextInputLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/tag_icon"
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/tag_color"
-            android:scaleType="center"
-            android:src="@mipmap/ic_label_black_24dp"
-            android:tint="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/tag_color"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="start|center"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/tag_color"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/add_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:text="@string/create_task"
-        android:textColor="@color/colorPrimaryDark"
-        android:theme="@style/MyButton" />
+            <ImageView
+                android:id="@+id/tag_icon"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/tag_color"
+                android:scaleType="center"
+                android:src="@mipmap/ic_label_black_24dp"
+                android:tint="@android:color/darker_gray" />
 
+            <TextView
+                android:id="@+id/tag_color"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="start|center"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/tag_color"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

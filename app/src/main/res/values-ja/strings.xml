@@ -15,4 +15,5 @@
     <string name="day_of_week_4">金曜日</string>
     <string name="day_of_week_5">土曜日</string>
     <string name="day_of_week_6">日曜日</string>
+    <string name="save">保存</string>
 </resources>
