@@ -170,6 +170,7 @@ public class WeeklyListFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         realm.close();
+        tempRealm.close();
     }
 
     private void setUpRecyclerView() {
