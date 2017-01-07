@@ -17,6 +17,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Date;
 
 import io.realm.Realm;
@@ -74,6 +77,14 @@ public class AddTaskActivity extends AppCompatActivity {
                 newFragment.show(getSupportFragmentManager(), "tagColor");
             }
         });
+
+        AdView adView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build(); // release用
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // すべてのエミュレータ
+                .addTestDevice(getResources().getString(R.string.test_device_id))  // テスト用携帯電話
+                .build();
+        adView.loadAd(adRequest);
     }
 
     @Override
