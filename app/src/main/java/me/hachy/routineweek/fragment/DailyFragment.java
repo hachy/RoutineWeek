@@ -2,6 +2,7 @@ package me.hachy.routineweek.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -42,11 +43,8 @@ public class DailyFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_daily, container, false);
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        fab = (FloatingActionButton) view.findViewById(R.id.main_fab);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         realm = Realm.getDefaultInstance();
         RealmConfiguration tempConfig = new RealmConfiguration.Builder()
@@ -54,6 +52,14 @@ public class DailyFragment extends Fragment {
                 .inMemory()
                 .build();
         tempRealm = Realm.getInstance(tempConfig);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_daily, container, false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        fab = (FloatingActionButton) view.findViewById(R.id.main_fab);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 new LinearLayoutManager(getActivity()).getOrientation());
