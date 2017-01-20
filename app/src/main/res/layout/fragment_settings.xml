@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:text="About this app"
+            android:text="@string/about"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
@@ -36,27 +36,20 @@
             android:layout_marginBottom="10dp"
             android:text="@string/explanation_1"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Open source license"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="realm-java"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:text="https://github.com/realm/realm-java/blob/master/LICENSE" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/open_source_license"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingBottom="16dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingTop="16dp"
+        android:text="@string/open_source_license"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
 </LinearLayout>

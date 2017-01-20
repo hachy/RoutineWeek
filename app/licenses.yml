@@ -1,0 +1,117 @@
+- artifact: com.android.databinding:adapters:+
+  name: adapters
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
+  skip: true
+- artifact: com.android.databinding:baseLibrary:+
+  name: com.android.databinding.baseLibrary
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
+  url: http://tools.android.com/
+  skip: true
+- artifact: com.android.databinding:library:+
+  name: library
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
+  skip: true
+- artifact: com.android.support:animated-vector-drawable:+
+  name: animated-vector-drawable
+  skip: true
+- artifact: com.android.support:appcompat-v7:+
+  name: appcompat-v7
+  skip: true
+- artifact: com.android.support:design:+
+  name: design
+  skip: true
+- artifact: com.android.support:recyclerview-v7:+
+  name: recyclerview-v7
+  skip: true
+- artifact: com.android.support:support-annotations:+
+  name: support-annotations
+  skip: true
+- artifact: com.android.support:support-compat:+
+  name: support-compat
+  skip: true
+- artifact: com.android.support:support-core-ui:+
+  name: support-core-ui
+  skip: true
+- artifact: com.android.support:support-core-utils:+
+  name: support-core-utils
+  skip: true
+- artifact: com.android.support:support-fragment:+
+  name: support-fragment
+  skip: true
+- artifact: com.android.support:support-media-compat:+
+  name: support-media-compat
+  skip: true
+- artifact: com.android.support:support-v4:+
+  name: support-v4
+  skip: true
+- artifact: com.android.support:support-vector-drawable:+
+  name: support-vector-drawable
+  skip: true
+- artifact: com.android.support:transition:+
+  name: transition
+  skip: true
+- artifact: com.getkeepsafe.relinker:relinker:+
+  name: ReLinker
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
+  url: https://github.com/KeepSafe/ReLinker
+  skip: true
+- artifact: com.google.android.gms:play-services-ads-lite:+
+  name: play-services-ads-lite
+  skip: true
+- artifact: com.google.android.gms:play-services-ads:+
+  name: play-services-ads
+  skip: true
+- artifact: com.google.android.gms:play-services-base:+
+  name: play-services-base
+  skip: true
+- artifact: com.google.android.gms:play-services-basement:+
+  name: play-services-basement
+  skip: true
+- artifact: com.google.android.gms:play-services-clearcut:+
+  name: play-services-clearcut
+  skip: true
+- artifact: com.google.android.gms:play-services-gass:+
+  name: play-services-gass
+  skip: true
+- artifact: com.google.android.gms:play-services-tasks:+
+  name: play-services-tasks
+  skip: true
+- artifact: com.google.firebase:firebase-ads:+
+  name: firebase-ads
+  skip: true
+- artifact: com.google.firebase:firebase-analytics-impl:+
+  name: firebase-analytics-impl
+  skip: true
+- artifact: com.google.firebase:firebase-analytics:+
+  name: firebase-analytics
+  skip: true
+- artifact: com.google.firebase:firebase-common:+
+  name: firebase-common
+  skip: true
+- artifact: com.google.firebase:firebase-core:+
+  name: firebase-core
+  skip: true
+- artifact: com.google.firebase:firebase-iid:+
+  name: firebase-iid
+  skip: true
+
+- artifact: io.realm:android-adapters:+
+  name: android-adapters
+  copyrightHolder: Realm Inc.
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
+  url: http://realm.io
+- artifact: io.realm:realm-android-library:+
+  name: realm-android-library
+  copyrightHolder: Realm Inc.
+  license: The Apache Software License, Version 2.0
+- artifact: io.realm:realm-annotations:+
+  name: realm-annotations
+  copyrightHolder: Realm Inc.
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
+  url: http://realm.io
