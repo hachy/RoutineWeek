@@ -25,9 +25,11 @@ import me.hachy.routineweek.util.TagColor;
 public class RoutineListAdapter extends RealmRecyclerViewAdapter<Todo, RoutineListAdapter.MyViewHolder> {
 
     private Realm realm;
+    private Context context;
 
     public RoutineListAdapter(@NonNull Context context, @Nullable OrderedRealmCollection<Todo> data, boolean autoUpdate) {
-        super(context, data, autoUpdate);
+        super(data, autoUpdate);
+        this.context = context;
     }
 
     @Override
