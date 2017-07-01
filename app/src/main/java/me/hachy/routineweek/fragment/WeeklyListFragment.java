@@ -117,7 +117,7 @@ public class WeeklyListFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(AddTaskActivity.createIntent(getActivity(), day));
+                startActivity(AddTaskActivity.Companion.createIntent(getActivity(), day));
             }
         });
 
