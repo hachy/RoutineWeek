@@ -37,7 +37,7 @@ class RoutineListAdapter(private val context: Context, data: OrderedRealmCollect
 
         val i = todo.tagColor
         val t = TagColor.values()[i]
-        val colorId = context.resources.getIdentifier(t.getName(), "color", context.packageName)
+        val colorId = context.resources.getIdentifier(t.name, "color", context.packageName)
         holder.binding.tagColor.setBackgroundColor(ContextCompat.getColor(context.applicationContext, colorId))
 
         holder.binding.checkBox.setOnClickListener {

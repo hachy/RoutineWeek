@@ -55,7 +55,7 @@ class AddTaskActivity : AppCompatActivity() {
         }
 
         val t = TagColor.values()[prefs!!.tagColorIdx]
-        val colorId = resources.getIdentifier(t.getName(), "color", packageName)
+        val colorId = resources.getIdentifier(t.name, "color", packageName)
         tagIcon.setColorFilter(ContextCompat.getColor(applicationContext, colorId))
 
         tagColor.setOnClickListener {
@@ -97,7 +97,7 @@ class AddTaskActivity : AppCompatActivity() {
                     } else {
                         nextId = 0
                     }
-                } catch (ex: ArrayIndexOutOfBoundsException) {
+                } catch (ex: Throwable) {
                     nextId = 0
                 }
 
