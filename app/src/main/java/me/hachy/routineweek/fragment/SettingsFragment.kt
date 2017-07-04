@@ -6,21 +6,20 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 import me.hachy.routineweek.R
 import me.hachy.routineweek.activity.LicenseActivity
 
 class SettingsFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_settings, container, false)
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater?.inflate(R.layout.fragment_settings, container, false)
+    }
 
-        val license = view.findViewById(R.id.open_source_license) as TextView
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         license.setOnClickListener { startActivity(LicenseActivity.createIntent(context)) }
-
-        return view
     }
 
     companion object {

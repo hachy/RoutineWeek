@@ -39,7 +39,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/open_source_license"
+        android:id="@+id/license"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
