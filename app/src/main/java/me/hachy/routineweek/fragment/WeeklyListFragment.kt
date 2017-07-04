@@ -50,7 +50,7 @@ class WeeklyListFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
         fab = view.findViewById(R.id.main_fab) as FloatingActionButton
-        val viewPager = activity.findViewById(R.id.view_pager) as ViewPager
+        val viewPager = activity.findViewById(R.id.viewPager) as ViewPager
 
         val dividerItemDecoration = DividerItemDecoration(recyclerView!!.context,
                 LinearLayoutManager(activity).orientation)
