@@ -13,7 +13,14 @@ import me.hachy.routineweek.fragment.WeeklyListFragment
 class WeeklyPagerAdapter(fm: FragmentManager, private val context: Context) : FragmentStatePagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence {
-        val TITLES = arrayOf(context.resources.getString(R.string.day_1), context.resources.getString(R.string.day_2), context.resources.getString(R.string.day_3), context.resources.getString(R.string.day_4), context.resources.getString(R.string.day_5), context.resources.getString(R.string.day_6), context.resources.getString(R.string.day_7))
+        val TITLES = arrayOf(
+                context.resources.getString(R.string.day_1),
+                context.resources.getString(R.string.day_2),
+                context.resources.getString(R.string.day_3),
+                context.resources.getString(R.string.day_4),
+                context.resources.getString(R.string.day_5),
+                context.resources.getString(R.string.day_6),
+                context.resources.getString(R.string.day_7))
         return TITLES[position]
     }
 

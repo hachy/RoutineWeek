@@ -16,10 +16,11 @@ import me.hachy.routineweek.R
 import me.hachy.routineweek.databinding.RoutineRowBinding
 import me.hachy.routineweek.model.Todo
 import me.hachy.routineweek.util.TagColor
+import kotlin.properties.Delegates
 
 class RoutineListAdapter(private val context: Context, data: OrderedRealmCollection<Todo>?, autoUpdate: Boolean) : RealmRecyclerViewAdapter<Todo, RoutineListAdapter.MyViewHolder>(data, autoUpdate) {
 
-    private var realm: Realm? = null
+    private var realm: Realm by Delegates.notNull()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         realm = Realm.getDefaultInstance()
@@ -31,26 +32,24 @@ class RoutineListAdapter(private val context: Context, data: OrderedRealmCollect
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val todo = data!![position]
+        val todo = data?.get(position)
         holder.binding.todo = todo
         holder.binding.executePendingBindings()
 
-        val i = todo.tagColor
-        val t = TagColor.values()[i]
+        val i = todo?.tagColor
+        val t = TagColor.values()[i as Int]
         val colorId = context.resources.getIdentifier(t.name, "color", context.packageName)
         holder.binding.tagColor.setBackgroundColor(ContextCompat.getColor(context.applicationContext, colorId))
 
         holder.binding.checkBox.setOnClickListener {
-            realm!!.beginTransaction()
-            val t = getItem(holder.adapterPosition)
-            if (t != null) {
+            realm.executeTransaction {
+                val t = getItem(holder.adapterPosition)
                 if (holder.binding.checkBox.isChecked) {
-                    t.done = true
+                    t?.done = true
                 } else if (!holder.binding.checkBox.isChecked) {
-                    t.done = false
+                    t?.done = false
                 }
             }
-            realm!!.commitTransaction()
         }
 
         holder.binding.moreVert.setOnClickListener { view ->
@@ -60,12 +59,12 @@ class RoutineListAdapter(private val context: Context, data: OrderedRealmCollect
             popup.show()
             popup.setOnMenuItemClickListener { item ->
                 if (item.itemId == R.id.remove) {
-                    realm!!.beginTransaction()
-                    val pos = holder.adapterPosition
-                    val t = getItem(pos)
-                    t?.deleteFromRealm()
-                    notifyItemRemoved(pos)
-                    realm!!.commitTransaction()
+                    realm.executeTransaction {
+                        val pos = holder.adapterPosition
+                        val t = getItem(pos)
+                        t?.deleteFromRealm()
+                        notifyItemRemoved(pos)
+                    }
                 }
                 true
             }
