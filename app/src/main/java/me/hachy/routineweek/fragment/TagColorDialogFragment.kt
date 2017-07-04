@@ -31,7 +31,7 @@ class TagColorDialogFragment : DialogFragment() {
 
                     val t = TagColor.values()[i]
                     val colorId = resources.getIdentifier(t.name, "color", activity.packageName)
-                    tagIcon!!.setColorFilter(ContextCompat.getColor(context, colorId))
+                    tagIcon?.setColorFilter(ContextCompat.getColor(context, colorId))
 
                     dialogInterface.dismiss()
                 }
