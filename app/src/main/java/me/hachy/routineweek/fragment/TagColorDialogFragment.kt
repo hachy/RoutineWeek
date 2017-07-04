@@ -22,7 +22,7 @@ class TagColorDialogFragment : DialogFragment() {
 
         val prefs = Prefs(context)
 
-        tagIcon = activity.findViewById(R.id.tag_icon) as ImageView
+        tagIcon = activity.findViewById(R.id.tagIcon) as ImageView
 
         val builder = AlertDialog.Builder(activity)
         builder.setTitle(R.string.tag_color)
