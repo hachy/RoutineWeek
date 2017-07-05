@@ -2,7 +2,6 @@ package me.hachy.routineweek.util
 
 
 import android.content.Context
-import android.content.SharedPreferences
 
 class Prefs(private val context: Context) {
 
