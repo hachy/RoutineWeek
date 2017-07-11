@@ -25,7 +25,7 @@ import me.hachy.routineweek.util.TagColor
 class AddTaskActivity : AppCompatActivity() {
 
     private var day: Int = 0
-    private var prefs: Prefs? = null
+    private lateinit var prefs: Prefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class AddTaskActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val t = TagColor.values()[prefs?.tagColorIdx as Int]
+        val t = TagColor.values()[prefs.tagColorIdx]
         val colorId = resources.getIdentifier(t.name, "color", packageName)
         tagIcon.setColorFilter(ContextCompat.getColor(applicationContext, colorId))
 
@@ -91,11 +91,11 @@ class AddTaskActivity : AppCompatActivity() {
                 todo.day = day
                 todo.content = "${editText.text}"
                 todo.done = false
-                todo.tagColor = prefs?.tagColorIdx as Int
+                todo.tagColor = prefs.tagColorIdx
                 todo.createdTime = Date()
-                realm.beginTransaction()
-                realm.copyToRealmOrUpdate(todo)
-                realm.commitTransaction()
+                realm.executeTransaction {
+                    realm.copyToRealmOrUpdate(todo)
+                }
                 finish()
             }
         }

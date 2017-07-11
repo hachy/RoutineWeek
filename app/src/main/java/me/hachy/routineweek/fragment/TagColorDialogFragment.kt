@@ -15,7 +15,7 @@ import me.hachy.routineweek.util.TagColor
 
 class TagColorDialogFragment : DialogFragment() {
 
-    private var tagIcon: ImageView? = null
+    private lateinit var tagIcon: ImageView
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
