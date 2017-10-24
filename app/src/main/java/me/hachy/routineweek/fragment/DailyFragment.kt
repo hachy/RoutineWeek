@@ -121,7 +121,8 @@ class DailyFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        val todo = realm.where(Todo::class.java).equalTo("day", 7).findAllSorted("createdTime")
+        val seven = 7
+        val todo = realm.where(Todo::class.java).equalTo("day", seven).findAllSorted("createdTime")
         adapter = RoutineListAdapter(context, todo, false)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
