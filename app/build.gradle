@@ -6,13 +6,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "me.hachy.routineweek"
         manifestPlaceholders = [appName: "@string/app_name"]
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -35,14 +35,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'io.realm:android-adapters:2.0.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.google.firebase:firebase-core:10.2.1'
-    compile 'com.google.firebase:firebase-ads:10.2.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'io.realm:android-adapters:2.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.google.firebase:firebase-core:11.4.2'
+    compile 'com.google.firebase:firebase-ads:11.4.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    kapt 'com.android.databinding:compiler:2.3.0'
+    kapt 'com.android.databinding:compiler:2.3.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
